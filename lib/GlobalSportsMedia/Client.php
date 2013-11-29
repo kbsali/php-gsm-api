@@ -144,7 +144,7 @@ class Client
     }
 
     /**
-     * HTTP GETs a xml $path and tries to decode it
+     * HTTP GETs a xml $path
      * @param  string $path
      * @return \SimpleXMLElement
      */
@@ -272,6 +272,12 @@ class Client
                 break;
         }
         $response = curl_exec($curl);
+
+        if(false !== strpos($response, 'not authorized')) {
+            $e = new \Exception('Not authorized! Please check your subscription (you requested : '.$tmp['path'].')');
+            curl_close($curl);
+            throw $e;
+        }
 
         if (curl_errno($curl)) {
             $e = new \Exception(curl_error($curl), curl_errno($curl));

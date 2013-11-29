@@ -6,7 +6,6 @@ use GlobalSportsMedia\Client;
 
 /**
  * Abstract class for Api classes
- *
  * @author Kevin Saliou <kevin at saliou dot name>
  */
 abstract class AbstractApi
@@ -27,11 +26,24 @@ abstract class AbstractApi
     }
 
     /**
-     * {@inheritDoc}
+     * Constructs the full url request and forwards it to the Client
+     * @param  string $path
+     * @param  array $defaults
+     * @param  array $params
+     * @return \SimpleXmlElement
      */
-    protected function get($path)
+    protected function get($path, array $defaults = null, array $params = null)
     {
-        return $this->client->get($path);
+        if(null === $defaults || null === $params) {
+            return $this->client->get($path);
+        }
+
+        $params = array_filter(
+            array_merge($defaults, $params),
+            array($this, 'isNotNull')
+        );
+
+        return $this->client->get($path . '?' . http_build_query($params));
     }
 
     /**
