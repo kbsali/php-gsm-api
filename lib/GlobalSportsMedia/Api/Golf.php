@@ -8,15 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class Golf extends AbstractApi
 {
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_areas
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
+    protected $section = 'golf';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_deleted

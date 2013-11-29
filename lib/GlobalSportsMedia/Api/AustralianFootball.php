@@ -8,15 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class AustralianFootball extends AbstractApi
 {
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/australian_football/functions/get_areas
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
+    protected $section = 'australianfootball';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/australian_football/functions/get_competitions

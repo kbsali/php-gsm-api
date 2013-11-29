@@ -18,6 +18,11 @@ abstract class AbstractApi
     protected $client;
 
     /**
+     * @var string
+     */
+    protected $section;
+
+    /**
      * @param Client $client
      */
     public function __construct(Client $client)
@@ -80,5 +85,21 @@ abstract class AbstractApi
         $ret = $this->get($endpoint . '?' . http_build_query($params));
 
         return $ret;
+    }
+
+    /**
+     * Returns all areas, which can be 'world', continents and countries.
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_areas
+     * @param  array $params array of optional params (area_id, lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_areas(array $params = array())
+    {
+        $defaults = array(
+            'area_id' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_areas', $defaults, $params);
     }
 }

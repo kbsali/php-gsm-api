@@ -8,20 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class AmericanFootball extends AbstractApi
 {
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_areas
-     * @param  array $params array of optional params (area_id, lang)
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        $defaults = array(
-            'area_id' => null,
-            'lang' => null,
-        );
-
-        return $this->get('/americanfootball/get_areas', $defaults, $params);
-    }
+    protected $section = 'americanfootball';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_competitions

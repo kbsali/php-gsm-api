@@ -8,21 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class Soccer extends AbstractApi
 {
-    /**
-     * Returns all areas, which can be 'world', continents and countries.
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_areas
-     * @param  array $params array of optional params (area_id, lang)
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        $defaults = array(
-            'area_id' => null,
-            'lang' => null,
-        );
-
-        return $this->get('/soccer/get_areas', $defaults, $params);
-    }
+    protected $section = 'soccer';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_betting_statistics

@@ -8,15 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class Cricket extends AbstractApi
 {
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/cricket/functions/get_areas
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
+    protected $section = 'cricket';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/cricket/functions/get_competitions

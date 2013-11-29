@@ -8,15 +8,7 @@ namespace GlobalSportsMedia\Api;
  */
 class Basketball extends AbstractApi
 {
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/basketball/functions/get_areas
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_areas(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
+    protected $section = 'basketball';
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/basketball/functions/get_competitions
