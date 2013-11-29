@@ -3,29 +3,23 @@
 namespace GlobalSportsMedia\Api;
 
 /**
- * @link   http://client.globalsportsmedia.com/documentation/american_football
+ * @link   http://client.globalsportsmedia.com/documentation/rugby
  * @author Kevin Saliou <kevin at saliou dot name>
  */
-class AmFootball extends AbstractApi
+class Rugby extends AbstractApi
 {
     /**
-     * Returns all areas, which can be 'world', continents and countries.
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_areas
-     * @param  array $params array of optional params (area_id, lang)
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_areas
+     * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
     public function get_areas(array $params = array())
     {
-        $defaults = array(
-            'area_id' => null,
-            'lang' => null,
-        );
-
-        return $this->get('/americanfootball/get_areas', $defaults, $params);
+        throw new \Exception('Not implemented yet');
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_competitions
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_competitions
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -35,7 +29,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_deleted
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_deleted
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -45,7 +39,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_groups
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_groups
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -55,7 +49,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_head2head
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_head2head
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -65,17 +59,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_injuries
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_injuries(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_matches
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_matches
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -85,7 +69,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_matches_live
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_matches_live
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -95,7 +79,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_player_statistics
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_player_statistics
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -105,17 +89,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_rankings
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_rankings(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_referees
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_referees
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -125,7 +99,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_rounds
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_rounds
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -135,7 +109,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_seasons
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_seasons
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -145,7 +119,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_squads
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_squads
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -155,7 +129,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_tables
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_tables
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -165,7 +139,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_teams
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_teams
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -175,7 +149,7 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_trophies
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_trophies
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
@@ -185,21 +159,11 @@ class AmFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_venues
+     * @link http://client.globalsportsmedia.com/documentation/rugby/functions/get_venues
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
     public function get_venues(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_weather
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_weather(array $params = array())
     {
         throw new \Exception('Not implemented yet');
     }

@@ -88,10 +88,10 @@ class Client
                     $api = new Api\Soccer($this);
                     break;
                 case 'am_football':
-                    $api = new Api\AmFootball($this);
+                    $api = new Api\AmericanFootball($this);
                     break;
                 case 'aus_football':
-                    $api = new Api\AusFootball($this);
+                    $api = new Api\AustralianFootball($this);
                     break;
                 case 'baseball':
                     $api = new Api\Baseball($this);

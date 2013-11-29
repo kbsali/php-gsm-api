@@ -63,7 +63,7 @@ try {
 
 
 
-    $xml = $client->api('am_football')->get_areas(array('area_id' => 32));
+    $xml = $client->api('am_football')->get_areas(array('area_id' => 7));
     $ret = array();
     foreach ($xml->area->area as $area) {
         $ret[(int) $area['area_id']] = array(
