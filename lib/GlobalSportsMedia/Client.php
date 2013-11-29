@@ -146,7 +146,7 @@ class Client
     /**
      * HTTP GETs a xml $path and tries to decode it
      * @param  string $path
-     * @return array
+     * @return \SimpleXMLElement
      */
     public function get($path)
     {
@@ -154,17 +154,7 @@ class Client
             return false;
         }
 
-        return $this->decode($xml);
-    }
-
-    /**
-     * Decodes xml response
-     * @param  string $xml
-     * @return array
-     */
-    public function decode($xml)
-    {
-        die('IMPL');
+        return $xml;
     }
 
     /**
