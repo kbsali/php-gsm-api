@@ -1,0 +1,27 @@
+{
+    "name": "kbsali/gsm-api",
+    "type": "library",
+    "description": "GlobalSportsMedia API client",
+    "homepage": "https://github.com/kbsali/php-gsm-api",
+    "keywords": ["globalsportsmedia", "gsm", "sport", "api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Saliou",
+            "email": "kevin@saliou.name",
+            "homepage": "http://kbsali.saliou.name"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "GlobalSportsMedia": "lib/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
