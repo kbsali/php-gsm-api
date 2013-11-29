@@ -102,4 +102,21 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_areas', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_competitions
+     * @param  array $params array of optional params (area_id, lang, authorized)
+     * @return \SimpleXMLElement
+     */
+    public function get_competitions(array $params = array())
+    {
+        $defaults = array(
+            'area_id' => null,
+            'lang' => null,
+            'authorized' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_competitions', $defaults, $params);
+    }
+
 }

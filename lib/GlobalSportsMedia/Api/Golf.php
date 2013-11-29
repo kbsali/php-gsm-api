@@ -10,6 +10,11 @@ class Golf extends AbstractApi
 {
     protected $section = 'golf';
 
+    public function get_competitions()
+    {
+        throw new \Exception(__METHOD__.' - this method does not exist');
+    }
+
     /**
      * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_deleted
      * @param  array $params array of optional params

@@ -54,22 +54,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_competitions
-     * @param  array $params array of optional params (area_id, lang, authorized)
-     * @return \SimpleXMLElement
-     */
-    public function get_competitions(array $params = array())
-    {
-        $defaults = array(
-            'area_id' => null,
-            'lang' => null,
-            'authorized' => null, // yes|no
-        );
-
-        return $this->get('/soccer/get_competitions', $defaults, $params);
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_deleted
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
