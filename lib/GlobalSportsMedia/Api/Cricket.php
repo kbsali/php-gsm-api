@@ -11,16 +11,6 @@ class Cricket extends AbstractApi
     protected $section = 'cricket';
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/cricket/functions/get_groups
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_groups(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/cricket/functions/get_head2head
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

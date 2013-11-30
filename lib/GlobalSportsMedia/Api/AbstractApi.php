@@ -133,4 +133,20 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_deleted', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_groups
+     * @param  int $round_id
+     * @param  array $params array of optional params
+     * @return \SimpleXMLElement
+     */
+    public function get_groups($round_id, array $params = array())
+    {
+        $defaults = array(
+            'round_id' => $round_id,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_groups', $defaults, $params);
+    }
 }

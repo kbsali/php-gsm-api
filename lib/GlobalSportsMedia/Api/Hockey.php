@@ -11,16 +11,6 @@ class Hockey extends AbstractApi
     protected $section = 'hockey';
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_groups
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_groups(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_head2head
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

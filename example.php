@@ -27,6 +27,8 @@ try {
     $xml = $client->api('soccer')->get_tables_live(4943, 'season');
     $xml = $client->api('soccer')->get_teams(661, 'team', array('detailed' => 'yes'));
 
+    $xml = $client->api('am_football')->get_groups(19);
+
     print_r($xml);die;
 
 
