@@ -6,6 +6,7 @@ $client = new GlobalSportsMedia\Client('http://webpull.globalsportsmedia.com', '
 
 try {
     $xml = $client->api('soccer')->get_betting_statistics(8055, 'season', 'result');
+    $xml = $client->api('soccer')->get_deleted(array('type' => 'person'));
     $xml = $client->api('soccer')->get_career(961, 'team');
     $xml = $client->api('soccer')->get_matches(8318, 'season');
     $xml = $client->api('soccer')->get_matches_live(array(

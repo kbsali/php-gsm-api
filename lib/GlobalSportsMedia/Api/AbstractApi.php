@@ -119,4 +119,18 @@ abstract class AbstractApi
         return $this->get('/'.$this->section.'/get_competitions', $defaults, $params);
     }
 
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_deleted
+     * @param  array $params array of optional params (type, start_date)
+     * @return \SimpleXMLElement
+     */
+    public function get_deleted(array $params = array())
+    {
+        $defaults = array(
+            'type' => null, // event|match|group|round|season|competition|area|person|team
+            'start_date' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_deleted', $defaults, $params);
+    }
 }

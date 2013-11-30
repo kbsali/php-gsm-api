@@ -11,16 +11,6 @@ class Basketball extends AbstractApi
     protected $section = 'basketball';
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/basketball/functions/get_deleted
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_deleted(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/basketball/functions/get_groups
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

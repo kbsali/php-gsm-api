@@ -16,16 +16,6 @@ class Tennis extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_deleted
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_deleted(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_doubles
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
