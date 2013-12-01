@@ -364,4 +364,24 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_venues', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_player_statistics
+     * @param  int $id
+     * @param  string $type (round|season)
+     * @param  array $params array of optional params (lang, team_id, limit)
+     * @return \SimpleXMLElement
+     */
+    public function get_player_statistics($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+            'team_id' => null,
+            'limit' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_player_statistics', $defaults, $params);
+    }
 }
