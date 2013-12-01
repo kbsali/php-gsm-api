@@ -29,6 +29,7 @@ try {
     $xml = $client->api('soccer')->get_referees('round', 13557);
 
     $xml = $client->api('baseball')->get_rounds(79);
+    $xml = $client->api('baseball')->get_trophies(5, 'competition');
 
     $xml = $client->api('cricket')->get_seasons(array('authorized' => 'yes', 'active' => 'yes'));
     $xml = $client->api('cricket')->get_squads(113, 'season', array('detailed' => 'yes'));

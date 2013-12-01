@@ -41,16 +41,6 @@ class AmericanFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_trophies
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_trophies(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_venues
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

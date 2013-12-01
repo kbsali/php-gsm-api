@@ -327,4 +327,22 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_teams', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_trophies
+     * @param  int $id
+     * @param  string $type (competition|season|team)
+     * @param  array $params array of optional params (lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_trophies($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_trophies', $defaults, $params);
+    }
 }

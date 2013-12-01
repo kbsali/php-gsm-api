@@ -285,16 +285,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_trophies
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_trophies(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * Returns all areas, which can be 'world', continents and countries.
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_venues
      * @param  array $params array of optional params

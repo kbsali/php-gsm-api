@@ -50,6 +50,11 @@ class Golf extends AbstractApi
         throw new \Exception(__METHOD__.' - this method does not exist');
     }
 
+    public function get_trophies()
+    {
+        throw new \Exception(__METHOD__.' - this method does not exist');
+    }
+
     /**
      * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_holebyhole
      * @param  array $params array of optional params
