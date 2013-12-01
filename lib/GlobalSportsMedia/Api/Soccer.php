@@ -84,26 +84,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_matches_live
-     * @param  array $params array of optional params (date, detailed, id, lang, minutes, now_playing, type)
-     * @return \SimpleXMLElement
-     */
-    public function get_matches_live(array $params = array())
-    {
-        $defaults = array(
-            'date' => null, // yyyy-mm-dd
-            'detailed' => null, // yes|no
-            'id' => null,
-            'lang' => null,
-            'minutes' => null,
-            'now_playing' => null, // yes|no
-            'type' => null, // area|season|match
-        );
-
-        return $this->get('/soccer/get_matches_live', $defaults, $params);
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_matches_live_updates
      * @param  array $params array of optional params (last_updated)
      * @return \SimpleXMLElement

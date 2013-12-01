@@ -35,6 +35,11 @@ class Motorsports extends AbstractApi
         throw new \Exception(__METHOD__.' - this method does not exist');
     }
 
+    public function get_matches_live()
+    {
+        throw new \Exception(__METHOD__.' - this method does not exist');
+    }
+
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_seasons
      * @param  array $params array of optional params

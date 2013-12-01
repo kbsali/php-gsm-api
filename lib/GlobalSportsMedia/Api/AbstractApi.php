@@ -194,4 +194,23 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_matches', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_matches_live
+     * @param  array $params array of optional params (now_playing, date, lang, detailed, id, type, minutes [soccer], statistics [basketball])
+     * @return \SimpleXMLElement
+     */
+    public function get_matches_live($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'now_playing' => null, // yes|no
+            'date' => null, // yyyy-mm-dd
+            'lang' => null,
+            'detailed' => null, // yes|no
+            'id' => null,
+            'type' => null, // area|season
+        );
+
+        return $this->get('/'.$this->section.'/get_matches_live', $defaults, $params);
+    }
 }
