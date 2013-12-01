@@ -265,24 +265,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_teams
-     * @param  int $id
-     * @param  string $type (area|season|round|group|team)
-     * @param  array $params array of optional params (detailed, lang)
-     * @return \SimpleXMLElement
-     */
-    public function get_teams($id, $type, array $params = array())
-    {
-        $defaults = array(
-            'id' => $id,
-            'type' => $type,
-            'detailed' => null, // yes|no
-            'lang' => null,
-        );
-
-        return $this->get('/soccer/get_teams', $defaults, $params);
-    }
-    /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_team_statistics
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

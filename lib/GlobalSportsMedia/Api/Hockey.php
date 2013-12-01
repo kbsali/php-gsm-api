@@ -41,16 +41,6 @@ class Hockey extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_teams
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_teams(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_trophies
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
