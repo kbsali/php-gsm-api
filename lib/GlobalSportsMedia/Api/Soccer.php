@@ -236,25 +236,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_tables
-     * @param  int $id
-     * @param  string $type (season|round)
-     * @param  array $params array of optional params (tabletype, lang)
-     * @return \SimpleXMLElement
-     */
-    public function get_tables($id, $type, array $params = array())
-    {
-        $defaults = array(
-            'id' => $id,
-            'type' => $type,
-            'lang' => null,
-            'tabletype' => null, // total|home|away|form-total|form-home|form-away|overunder
-        );
-
-        return $this->get('/soccer/get_tables', $defaults, $params);
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_tables_cumulative
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

@@ -76,16 +76,6 @@ class Tennis extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_tables
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_tables(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_tours
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

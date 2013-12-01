@@ -289,4 +289,23 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_squads', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_tables
+     * @param  int $id
+     * @param  string $type (season|round)
+     * @param  array $params array of optional params (tabletype, lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_tables($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'tabletype' => null, // total|home|away|form-total|form-home|form-away|overunder
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_tables', $defaults, $params);
+    }
 }
