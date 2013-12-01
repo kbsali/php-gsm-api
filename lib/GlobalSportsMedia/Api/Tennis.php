@@ -45,6 +45,11 @@ class Tennis extends AbstractApi
         throw new \Exception(__METHOD__.' - this method does not exist');
     }
 
+    public function get_venues()
+    {
+        throw new \Exception(__METHOD__.' - this method does not exist');
+    }
+
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_doubles
      * @param  array $params array of optional params

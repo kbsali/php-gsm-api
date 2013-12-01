@@ -345,4 +345,23 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_trophies', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_venues
+     * @param  int $id
+     * @param  string $type (area|season|team|venue)
+     * @param  array $params array of optional params (detailed, lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_venues($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'detailed' => null, // yes|no
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_venues', $defaults, $params);
+    }
 }

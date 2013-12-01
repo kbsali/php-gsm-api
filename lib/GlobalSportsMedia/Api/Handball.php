@@ -19,14 +19,4 @@ class Handball extends AbstractApi
     {
         throw new \Exception('Not implemented yet');
     }
-
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/handball/functions/get_venues
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_venues(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
 }
