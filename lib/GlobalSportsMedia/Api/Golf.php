@@ -96,13 +96,20 @@ class Golf extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_rankings
-     * @param  array $params array of optional params
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_rankings
+     * @param  string $type (owgr|LPGA|PGA_money|EPGA_money|FedEx)
+     * @param  array $params array of optional params (year, date, lang)
      * @return \SimpleXMLElement
      */
-    public function get_rankings(array $params = array())
+    public function get_rankings($type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'type' => $type,
+            'date' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
     }
 
     /**

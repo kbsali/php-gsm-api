@@ -28,21 +28,35 @@ class AmericanFootball extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_rankings
-     * @param  array $params array of optional params
+     * @param  string $type (ap_top_25|bcs|usa_today_coach)
+     * @param  array $params array of optional params (year, date, lang)
      * @return \SimpleXMLElement
      */
-    public function get_rankings(array $params = array())
+    public function get_rankings($type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'type' => $type,
+            'year' => null,
+            'date' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_weather
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (match)
      * @return \SimpleXMLElement
      */
-    public function get_weather(array $params = array())
+    public function get_weather($id, $type)
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+        );
+
+        return $this->get('/'.$this->section.'/get_weather', $defaults, $params);
     }
 }

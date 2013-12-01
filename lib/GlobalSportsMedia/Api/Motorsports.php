@@ -55,16 +55,6 @@ class Motorsports extends AbstractApi
         throw new \Exception(__METHOD__.' - this method does not exist');
     }
 
-    public function get_tables()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_teams()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
     public function get_trophies()
     {
         throw new \Exception(__METHOD__.' - this method does not exist');

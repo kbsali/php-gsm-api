@@ -29,7 +29,7 @@ class Soccer extends AbstractApi
             'last_n_matches' => null,
         );
 
-        return $this->get('/soccer/get_betting_statistics', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_betting_statistics', $defaults, $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class Soccer extends AbstractApi
             'range' => null, // league|cups|national|all
         );
 
-        return $this->get('/soccer/get_career', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_career', $defaults, $params);
     }
 
     /**
@@ -100,7 +100,7 @@ class Soccer extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/soccer/get_matches_live_updates', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_matches_live_updates', $defaults, $params);
     }
 
     /**
@@ -118,7 +118,7 @@ class Soccer extends AbstractApi
             // 'team_id' => null,
         );
 
-        return $this->get('/soccer/get_match_commentary', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_match_commentary', $defaults, $params);
     }
 
     /**
@@ -183,12 +183,20 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_rankings
-     * @param  array $params array of optional params
+     * @param  string $type (fifa)
+     * @param  array $params array of optional params (year, month, lang)
      * @return \SimpleXMLElement
      */
-    public function get_rankings(array $params = array())
+    public function get_rankings($type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'type' => $type,
+            'year' => null,
+            'month' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
     }
 
     /**
@@ -257,7 +265,7 @@ class Soccer extends AbstractApi
             'tabletype' => null, // total
         );
 
-        return $this->get('/soccer/get_tables_live', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_tables_live', $defaults, $params);
     }
 
     /**

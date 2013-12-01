@@ -77,12 +77,23 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_rankings
-     * @param  array $params array of optional params
+     * @param  int $tour_id
+     * @param  string $type (owgr|LPGA|PGA_money|EPGA_money|FedEx)
+     * @param  array $params array of optional params (year, weeknumber, lang, doubles_team)
      * @return \SimpleXMLElement
      */
-    public function get_rankings(array $params = array())
+    public function get_rankings($tour_id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'tour_id' => $tour_id,
+            'type' => $type,
+            'year' => null,
+            'weeknumber' => null,
+            'lang' => null,
+            'doubles_team' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
     }
 
     /**
