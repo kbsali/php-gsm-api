@@ -41,16 +41,6 @@ class Hockey extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_rounds
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_rounds(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_seasons
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

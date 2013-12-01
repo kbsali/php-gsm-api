@@ -231,4 +231,20 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_referees', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_rounds
+     * @param  int $season_id
+     * @param  array $params array of optional params (lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_rounds($season_id, $id, array $params = array())
+    {
+        $defaults = array(
+            'season_id' => $season_id,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rounds', $defaults, $params);
+    }
 }
