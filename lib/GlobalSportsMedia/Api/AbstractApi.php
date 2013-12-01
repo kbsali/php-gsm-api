@@ -200,7 +200,7 @@ abstract class AbstractApi
      * @param  array $params array of optional params (now_playing, date, lang, detailed, id, type, minutes [soccer], statistics [basketball])
      * @return \SimpleXMLElement
      */
-    public function get_matches_live($id, $type, array $params = array())
+    public function get_matches_live(array $params = array())
     {
         $defaults = array(
             'now_playing' => null, // yes|no
@@ -212,5 +212,23 @@ abstract class AbstractApi
         );
 
         return $this->get('/'.$this->section.'/get_matches_live', $defaults, $params);
+    }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_referees
+     * @param  string $type (season|round|match_id|referee)
+     * @param  int $id
+     * @param  array $params array of optional params (lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_referees($type, $id, array $params = array())
+    {
+        $defaults = array(
+            'type' => $type, // season|round|match_id|referee
+            'id' => $id,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_referees', $defaults, $params);
     }
 }
