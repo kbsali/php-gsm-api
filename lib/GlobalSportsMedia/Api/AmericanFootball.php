@@ -41,16 +41,6 @@ class AmericanFootball extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_squads
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_squads(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_tables
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

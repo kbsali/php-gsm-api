@@ -206,29 +206,6 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_squads
-     * @param  int $id
-     * @param  string $type (area|season|round|group|team)
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_squads($id, $type, array $params = array())
-    {
-        $defaults = array(
-            'id' => $id,
-            'type' => $type,
-            'active' => null, // yes|no
-            'contracts' => null,
-            'detailed' => null, // yes|no
-            'lang' => null,
-            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
-            'statistics' => null, // yes|no
-        );
-
-        return $this->get('/soccer/get_squads', $defaults, $params);
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_squads_changes
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

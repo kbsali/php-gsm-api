@@ -31,6 +31,7 @@ try {
     $xml = $client->api('baseball')->get_rounds(79);
 
     $xml = $client->api('cricket')->get_seasons(array('authorized' => 'yes', 'active' => 'yes'));
+    $xml = $client->api('cricket')->squads(113, 'season', array('detailed' => 'yes'));
 
     $xml = $client->api('am_football')->get_groups(19);
     $xml = $client->api('am_football')->get_head2head(25, 26);
