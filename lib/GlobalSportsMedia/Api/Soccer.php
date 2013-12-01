@@ -75,12 +75,18 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_injuries
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (competition|player|match|team)
      * @return \SimpleXMLElement
      */
-    public function get_injuries(array $params = array())
+    public function get_injuries($id, $type)
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+        );
+
+        return $this->get('/'.$this->section.'/get_injuries', $defaults, $params);
     }
 
     /**

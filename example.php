@@ -33,6 +33,7 @@ try {
     $xml = $client->api('baseball')->get_venues(1, 'area');
 
     $xml = $client->api('basketball')->get_player_statistics(408, 'season', array('team_id' => 178));
+    $xml = $client->api('basketball')->get_injuries(191, 'team');
 
     $xml = $client->api('cricket')->get_seasons(array('authorized' => 'yes', 'active' => 'yes'));
     $xml = $client->api('cricket')->get_squads(113, 'season', array('detailed' => 'yes'));
