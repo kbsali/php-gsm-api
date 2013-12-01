@@ -149,4 +149,25 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_groups', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_head2head
+     * @param  string $team_A_id
+     * @param  string $team_B_id
+     * @param  array $params array of optional params (competition_id, start_date, end_date, lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_head2head($team_A_id, $team_B_id, array $params = array())
+    {
+        $defaults = array(
+            'team_A_id' => $team_A_id,
+            'team_B_id' => $team_B_id,
+            'competition_id' => null,
+            'start_date' => null,
+            'end_date' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_head2head', $defaults, $params);
+    }
 }

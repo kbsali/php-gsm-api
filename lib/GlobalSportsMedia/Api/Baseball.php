@@ -11,16 +11,6 @@ class Baseball extends AbstractApi
     protected $section = 'baseball';
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/baseball/functions/get_head2head
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_head2head(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/baseball/functions/get_injuries
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

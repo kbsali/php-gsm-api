@@ -28,6 +28,7 @@ try {
     $xml = $client->api('soccer')->get_teams(661, 'team', array('detailed' => 'yes'));
 
     $xml = $client->api('am_football')->get_groups(19);
+    $xml = $client->api('am_football')->get_head2head(25, 26);
 
     print_r($xml);die;
 
