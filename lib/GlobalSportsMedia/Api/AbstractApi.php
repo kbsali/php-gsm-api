@@ -238,7 +238,7 @@ abstract class AbstractApi
      * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
-    public function get_rounds($season_id, $id, array $params = array())
+    public function get_rounds($season_id, array $params = array())
     {
         $defaults = array(
             'season_id' => $season_id,
@@ -246,5 +246,25 @@ abstract class AbstractApi
         );
 
         return $this->get('/'.$this->section.'/get_rounds', $defaults, $params);
+    }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_seasons
+     * @param  array $params array of optional params (lang)
+     * @return \SimpleXMLElement
+     */
+    public function get_seasons(array $params = array())
+    {
+        $defaults = array(
+            'authorized' => null, // yes|no
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+            'coverage' => null,
+            'active' => null, // yes|no
+            'id' => null,
+            'type' => null,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_seasons', $defaults, $params);
     }
 }

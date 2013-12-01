@@ -26,6 +26,11 @@ try {
     $xml = $client->api('soccer')->get_tables(8055, 'season');
     $xml = $client->api('soccer')->get_tables_live(4943, 'season');
     $xml = $client->api('soccer')->get_teams(661, 'team', array('detailed' => 'yes'));
+    $xml = $client->api('soccer')->get_referees('round', 13557);
+
+    $xml = $client->api('baseball')->get_rounds(79);
+
+    $xml = $client->api('cricket')->get_seasons(array('authorized' => 'yes', 'active' => 'yes'));
 
     $xml = $client->api('am_football')->get_groups(19);
     $xml = $client->api('am_football')->get_head2head(25, 26);

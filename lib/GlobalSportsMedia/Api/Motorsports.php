@@ -51,16 +51,6 @@ class Motorsports extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_seasons
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_seasons(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_sessions
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
