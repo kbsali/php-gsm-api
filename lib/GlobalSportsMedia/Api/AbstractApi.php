@@ -170,4 +170,28 @@ abstract class AbstractApi
 
         return $this->get('/'.$this->section.'/get_head2head', $defaults, $params);
     }
+
+    /**
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_matches
+     * @param  int $id
+     * @param  string $type (area|season|round|group|match|team|player)
+     * @param  array $params array of optional params (detailed, start_date, end_date, lang, last_updated, limit, played)
+     * @return \SimpleXMLElement
+     */
+    public function get_matches($id, $type, array $params = array())
+    {
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'detailed' => null, // yes|no
+            'start_date' => null, // yyyy-mm-dd hh:mm:ss
+            'end_date' => null, // yyyy-mm-dd hh:mm:ss
+            'lang' => null,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+            'limit' => null,
+            'played' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_matches', $defaults, $params);
+    }
 }

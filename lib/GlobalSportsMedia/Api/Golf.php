@@ -46,16 +46,6 @@ class Golf extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_matches
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_matches(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_people
      * @param  array $params array of optional params
      * @return \SimpleXMLElement

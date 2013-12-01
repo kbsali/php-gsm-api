@@ -36,16 +36,6 @@ class Tennis extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_matches
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_matches(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
-    }
-
-    /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_matches_live
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
