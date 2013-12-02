@@ -22,11 +22,15 @@ try {
 
     $xml = $client->api('golf')->get_holebyhole(1294, 'round');
     $xml = $client->api('golf')->get_leaderboard(333, 'season');
-    $xml = $client->api('golf')->get_people(138, 'person', array('detailed' => 'yes');
+    $xml = $client->api('golf')->get_people(138, 'person', array('detailed' => 'yes'));
 
     $xml = $client->api('handball')->get_tables(114, 'season', array('tabletype' => 'form-home'));
 
     $xml = $client->api('hockey')->get_match_extra(102880);
+
+    $xml = $client->api('motorsports')->get_circuit(1, 'championship', array('detailed' => 'yes'));
+    $xml = $client->api('motorsports')->get_sessions(3013, 'session', array('detailed' => 'yes'));
+    $xml = $client->api('motorsports')->get_teammembers(3007, 'session', array('detailed' => 'yes'));
 
     $xml = $client->api('tennis')->get_tours(array('type' => 'tour'));
 

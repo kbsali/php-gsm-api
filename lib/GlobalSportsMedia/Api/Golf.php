@@ -69,7 +69,7 @@ class Golf extends AbstractApi
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_holebyhole
      * @param  int $id
      * @param  string $type (round)
-     * @param  array $params array of optional params
+     * @param  array $params array of optional params (last_updated, lang)
      * @return \SimpleXMLElement
      */
     public function get_holebyhole($id, $type = 'round', array $params = array())
@@ -88,7 +88,7 @@ class Golf extends AbstractApi
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_leaderboard
      * @param  int $id
      * @param  string $type (season)
-     * @param  array $params array of optional params
+     * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
     public function get_leaderboard($id, $type = 'season', array $params = array())
@@ -106,7 +106,7 @@ class Golf extends AbstractApi
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_people
      * @param  int $id
      * @param  string $type (people|round|season)
-     * @param  array $params array of optional params
+     * @param  array $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_people($id, $type, array $params = array())
@@ -118,13 +118,13 @@ class Golf extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_leaderboard', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_people', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_rankings
      * @param  string $type (owgr|LPGA|PGA_money|EPGA_money|FedEx)
-     * @param  array $params array of optional params (year, date, lang)
+     * @param  array $params array of optional params (date, lang)
      * @return \SimpleXMLElement
      */
     public function get_rankings($type, array $params = array())
@@ -151,6 +151,6 @@ class Golf extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
+        return $this->get('/'.$this->section.'/get_tours', $defaults, $params);
     }
 }

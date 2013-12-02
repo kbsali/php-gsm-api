@@ -11,13 +11,22 @@ class Motorsports extends AbstractApi
     protected $section = 'motorsports';
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_circuits
-     * @param  array $params array of optional params
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_circuits
+     * @param  int $id
+     * @param  string $type (area|championship|competition|season|session|circuit)
+     * @param  array $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
-    public function get_circuits(array $params = array())
+    public function get_circuits($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+            'detailed' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_circuits', $defaults, $params);
     }
 
     public function get_groups()
@@ -72,12 +81,24 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_sessions
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (session|season)
+     * @param  array $params array of optional params (detailed, start_date, end_date, lang, last_updated)
      * @return \SimpleXMLElement
      */
-    public function get_sessions(array $params = array())
+    public function get_sessions($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'detailed' => null, // yes|no
+            'start_date' => null, // yyyy-mm-dd hh:mm:ss
+            'end_date' => null, // yyyy-mm-dd hh:mm:ss
+            'lang' => null,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+        );
+
+        return $this->get('/'.$this->section.'/get_sessions', $defaults, $params);
     }
 
     /**
@@ -103,21 +124,22 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_teammembers
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (area|season|team)
+     * @param  array $params array of optional params (detailed, lang, last_updated, active)
      * @return \SimpleXMLElement
      */
-    public function get_teammembers(array $params = array())
+    public function get_teammembers($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
-    }
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'detailed' => null, // yes|no
+            'lang' => null,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+            'active' => null, // yes|no
+        );
 
-    /**
-     * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_teams
-     * @param  array $params array of optional params
-     * @return \SimpleXMLElement
-     */
-    public function get_teams(array $params = array())
-    {
-        throw new \Exception('Not implemented yet');
+        return $this->get('/'.$this->section.'/get_teammembers', $defaults, $params);
     }
 }
