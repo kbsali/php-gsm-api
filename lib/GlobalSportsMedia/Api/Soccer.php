@@ -132,13 +132,20 @@ class Soccer extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_match_extra
-     * @param  array $params array of optional params
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_match_extra
+     * @param  int $id
+     * @param  array $params array of optional params (lang, last_updated)
      * @return \SimpleXMLElement
      */
-    public function get_match_extra(array $params = array())
+    public function get_match_extra($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'lang' => null,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+        );
+
+        return $this->get('/'.$this->section.'/get_match_extra', $defaults, $params);
     }
 
     /**

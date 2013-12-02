@@ -28,6 +28,8 @@ try {
     $xml = $client->api('soccer')->get_teams(661, 'team', array('detailed' => 'yes'));
     $xml = $client->api('soccer')->get_referees('round', 13557);
 
+    $xml = $client->api('hockey')->get_match_extra(102880);
+
     $xml = $client->api('baseball')->get_rounds(79);
     $xml = $client->api('baseball')->get_trophies(5, 'competition');
     $xml = $client->api('baseball')->get_venues(1, 'area');
