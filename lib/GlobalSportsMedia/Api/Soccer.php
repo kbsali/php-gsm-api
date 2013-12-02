@@ -77,9 +77,10 @@ class Soccer extends AbstractApi
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_injuries
      * @param  int $id
      * @param  string $type (competition|player|match|team)
+     * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_injuries($id, $type)
+    public function get_injuries($id, $type, array $params = array())
     {
         $defaults = array(
             'id' => $id,
@@ -160,22 +161,33 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_match_statistics
+     * @param  int $id
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_match_statistics(array $params = array())
+    public function get_match_statistics($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+        );
+
+        return $this->get('/'.$this->section.'/get_match_statistics', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_match_statistics_v2
+     * @param  int $id
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_match_statistics_v2(array $params = array())
+    public function get_match_statistics_v2($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => 'match',
+        );
+
+        return $this->get('/'.$this->section.'/get_match_statistics_v2', $defaults, $params);
     }
 
     /**

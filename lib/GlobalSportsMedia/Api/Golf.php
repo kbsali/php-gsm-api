@@ -66,33 +66,59 @@ class Golf extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_holebyhole
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_holebyhole
+     * @param  int $id
+     * @param  string $type (round)
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_holebyhole(array $params = array())
+    public function get_holebyhole($id, $type = 'round', array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_holebyhole', $defaults, $params);
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_leaderboard
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_leaderboard
+     * @param  int $id
+     * @param  string $type (season)
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_leaderboard(array $params = array())
+    public function get_leaderboard($id, $type = 'season', array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_leaderboard', $defaults, $params);
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_people
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_people
+     * @param  int $id
+     * @param  string $type (people|round|season)
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_people(array $params = array())
+    public function get_people($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+            'detailed' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_leaderboard', $defaults, $params);
     }
 
     /**
@@ -113,12 +139,18 @@ class Golf extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/gold/functions/get_tours
-     * @param  array $params array of optional params
+     * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_tours
+     * @param  array $params array of optional params (id, type, lang)
      * @return \SimpleXMLElement
      */
     public function get_tours(array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => null,
+            'type' => 'tour',
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
     }
 }

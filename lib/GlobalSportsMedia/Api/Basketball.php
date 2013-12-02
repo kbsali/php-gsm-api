@@ -14,9 +14,10 @@ class Basketball extends AbstractApi
      * @link http://client.globalsportsmedia.com/documentation/basketball/functions/get_injuries
      * @param  int $id
      * @param  string $type (competition|player|match|team)
+     * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_injuries($id, $type)
+    public function get_injuries($id, $type, array $params = array())
     {
         $defaults = array(
             'id' => $id,

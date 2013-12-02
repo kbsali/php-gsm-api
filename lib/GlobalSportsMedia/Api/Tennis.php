@@ -78,7 +78,7 @@ class Tennis extends AbstractApi
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_rankings
      * @param  int $tour_id
-     * @param  string $type (owgr|LPGA|PGA_money|EPGA_money|FedEx)
+     * @param  string $type (single|double|mixed)
      * @param  array $params array of optional params (year, weeknumber, lang, doubles_team)
      * @return \SimpleXMLElement
      */
@@ -108,11 +108,17 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_tours
-     * @param  array $params array of optional params
+     * @param  array $params array of optional params (id, type, lang)
      * @return \SimpleXMLElement
      */
     public function get_tours(array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => null,
+            'type' => 'tour',
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_tours', $defaults, $params);
     }
 }

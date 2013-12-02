@@ -81,13 +81,24 @@ class Motorsports extends AbstractApi
     }
 
     /**
-     * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_tables
-     * @param  array $params array of optional params
+     * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_tables
+     * @param  int $id
+     * @param  string $type (championship)
+     * @param  int $year
+     * @param  array $params array of optional params (tabletype, lang)
      * @return \SimpleXMLElement
      */
-    public function get_tables(array $params = array())
+    public function get_tables($id, $type, $year, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'year' => $year,
+            'tabletype' => null, // driver|team|race
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_tables', $defaults, $params);
     }
 
     /**
