@@ -33,6 +33,9 @@ try {
     $xml = $client->api('motorsports')->get_teammembers(3007, 'session', array('detailed' => 'yes'));
 
     $xml = $client->api('tennis')->get_tours(array('type' => 'tour'));
+    $xml = $client->api('tennis')->get_doubles(31, 'double', array('detailed' => 'yes'));
+    $xml = $client->api('tennis')->get_players(31, 'double', array('gender' => 'male'));
+    $xml = $client->api('tennis')->get_season_competitor(1741);
 
     $xml = $client->api('soccer')->get_betting_statistics(8055, 'season', 'result');
     $xml = $client->api('soccer')->get_career(961, 'team');

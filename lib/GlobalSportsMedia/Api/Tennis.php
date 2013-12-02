@@ -57,22 +57,41 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_doubles
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (double)
+     * @param  array $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
-    public function get_doubles(array $params = array())
+    public function get_doubles($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+            'detailed' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_doubles', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_players
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (area|national_team|double|player)
+     * @param  array $params array of optional params (gender, lang, detailed)
      * @return \SimpleXMLElement
      */
-    public function get_players(array $params = array())
+    public function get_players($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'gender' => null, // male|female
+            'lang' => null,
+            'detailed' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_players', $defaults, $params);
     }
 
     /**
@@ -98,12 +117,19 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_season_competitor
-     * @param  array $params array of optional params
+     * @param  int $season_id
+     * @param  array $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
-    public function get_season_competitor(array $params = array())
+    public function get_season_competitor($season_id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'season_id' => $season_id,
+            'lang' => null,
+            'detailed' => null, // yes|no
+        );
+
+        return $this->get('/'.$this->section.'/get_season_competitor', $defaults, $params);
     }
 
     /**
