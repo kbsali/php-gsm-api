@@ -55,22 +55,38 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_hashtags
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (competition|team|people|match)
+     * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
-    public function get_hashtags(array $params = array())
+    public function get_hashtags($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_hashtags', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_head_2_head_statistics
-     * @param  array $params array of optional params
+     * @param  int $team_1_id
+     * @param  int $team_2_id
+     * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
-    public function get_head_2_head_statistics(array $params = array())
+    public function get_head_2_head_statistics($team_1_id, $team_2_id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'team_1_id' => $team_1_id,
+            'team_2_id' => $team_2_id,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_head_2_head_statistics', $defaults, $params);
     }
 
     /**
@@ -124,12 +140,18 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_match_editorials
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  array $params array of optional params (text)
      * @return \SimpleXMLElement
      */
-    public function get_match_editorials(array $params = array())
+    public function get_match_editorials($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'text' => null, // preview|review|both
+        );
+
+        return $this->get('/'.$this->section.'/get_match_editorials', $defaults, $params);
     }
 
     /**
@@ -151,12 +173,19 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_match_formations
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  array $params array of optional params (lang, last_updated)
      * @return \SimpleXMLElement
      */
-    public function get_match_formations(array $params = array())
+    public function get_match_formations($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'lang' => null,
+            'last_updated' => null, // yyyy-mm-dd hh:mm:ss
+        );
+
+        return $this->get('/'.$this->section.'/get_match_formations', $defaults, $params);
     }
 
     /**
@@ -192,12 +221,22 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_players_abroad
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type
+     * @param  string $date YYYY-MM-DD
+     * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
-    public function get_players_abroad(array $params = array())
+    public function get_players_abroad($id, $type = 'area', $date, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'date' => $date,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_players_abroad', $defaults, $params);
     }
 
     /**
@@ -220,52 +259,87 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_runningball_matches
-     * @param  array $params array of optional params
+     * @param  array $params array of optional params (type, lang)
      * @return \SimpleXMLElement
      */
     public function get_runningball_matches(array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => null,
+            'type' => null, // match
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_runningball_matches', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_squads_changes
-     * @param  array $params array of optional params
+     * @param  string $last_updated yyyy-mm-dd
+     * @param  array $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
-    public function get_squads_changes(array $params = array())
+    public function get_squads_changes($last_updated, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'last_updated' => $last_updated,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_squads_changes', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_suspensions
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  array $params array of optional params (type, lang)
      * @return \SimpleXMLElement
      */
-    public function get_suspensions(array $params = array())
+    public function get_suspensions($id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => null, // match|player|season
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_suspensions', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_suspensions_warning
+     * @param  int $id
+     * @param  string $type (match)
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_suspensions_warning(array $params = array())
+    public function get_suspensions_warning($id, $type = 'match', array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_suspensions_warning', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_tables_cumulative
+     * @param  int $id
+     * @param  string $type (season)
      * @param  array $params array of optional params
      * @return \SimpleXMLElement
      */
-    public function get_tables_cumulative(array $params = array())
+    public function get_tables_cumulative($id, $type = 'season', array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'lang' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_tables_cumulative', $defaults, $params);
     }
 
     /**
@@ -289,21 +363,41 @@ class Soccer extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_team_statistics
-     * @param  array $params array of optional params
+     * @param  int $team_id
+     * @param  array $params array of optional params (form, season_id)
      * @return \SimpleXMLElement
      */
-    public function get_team_statistics(array $params = array())
+    public function get_team_statistics($team_id, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'form' => null,
+            'season_id' => null, // total
+        );
+
+        return $this->get('/'.$this->section.'/get_team_statistics', $defaults, $params);
     }
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/soccer/functions/get_transfers
-     * @param  array $params array of optional params
+     * @param  int $id
+     * @param  string $type (area|competition|person|team)
+     * @param  array $params array of optional params (start_date, end_date, updated_since, proceeded, lang, limit, offset)
      * @return \SimpleXMLElement
      */
-    public function get_transfers(array $params = array())
+    public function get_transfers($id, $type, array $params = array())
     {
-        throw new \Exception('Not implemented yet');
+        $defaults = array(
+            'id' => $id,
+            'type' => $type,
+            'start_date' => null, // yyyy-mm-dd hh:mm:ss
+            'end_date' => null, // yyyy-mm-dd hh:mm:ss
+            'updated_since' => null, // yyyy-mm-dd hh:mm:ss
+            'lang' => null,
+            'limit' => null,
+            'offset' => null,
+        );
+
+        return $this->get('/'.$this->section.'/get_transfers', $defaults, $params);
     }
 }

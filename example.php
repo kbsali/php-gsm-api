@@ -32,26 +32,37 @@ try {
     $xml = $client->api('motorsports')->get_sessions(3013, 'session', array('detailed' => 'yes'));
     $xml = $client->api('motorsports')->get_teammembers(3007, 'session', array('detailed' => 'yes'));
 
-    $xml = $client->api('tennis')->get_tours(array('type' => 'tour'));
     $xml = $client->api('tennis')->get_doubles(31, 'double', array('detailed' => 'yes'));
     $xml = $client->api('tennis')->get_players(31, 'double', array('gender' => 'male'));
     $xml = $client->api('tennis')->get_season_competitor(1741);
+    $xml = $client->api('tennis')->get_tours(array('type' => 'tour'));
 
     $xml = $client->api('soccer')->get_betting_statistics(8055, 'season', 'result');
     $xml = $client->api('soccer')->get_career(961, 'team');
     $xml = $client->api('soccer')->get_competitions();
     $xml = $client->api('soccer')->get_deleted(array('type' => 'person'));
+    $xml = $client->api('soccer')->get_hashtags(964, 'team');
     $xml = $client->api('soccer')->get_match_commentary(1286864, array('source' => 'auto'));
+    $xml = $client->api('soccer')->get_match_editorials(1286861, array('text' => 'both'));
+    $xml = $client->api('soccer')->get_match_formations(1286869);
     $xml = $client->api('soccer')->get_matches(8318, 'season');
     $xml = $client->api('soccer')->get_matches_live(array('now_playing' => 'no', 'minutes' => 'yes', 'type' => 'match', 'id' => 1445860, 'date' => '2013-06-11'));
     $xml = $client->api('soccer')->get_matches_live_updates(array('last_updated' => '2012-03-23 13:25:00'));
+    $xml = $client->api('soccer')->get_players_abroad(80, 'area', '2012-11-15');
     $xml = $client->api('soccer')->get_referees('round', 13557);
+    $xml = $client->api('soccer')->get_runningball_matches();
     $xml = $client->api('soccer')->get_squads(663, 'team');
+    $xml = $client->api('soccer')->get_squads_changes('2013-09-10');
     $xml = $client->api('soccer')->get_statistics(1286862);
     $xml = $client->api('soccer')->get_statistics_v2(1468351 );
+    $xml = $client->api('soccer')->get_suspensions(1483412);
+    $xml = $client->api('soccer')->get_suspensions_warning(1063217, 'match');
     $xml = $client->api('soccer')->get_tables(8055, 'season');
+    $xml = $client->api('soccer')->get_tables_cumulative(7299, 'season', array('lang' => 'en'));
     $xml = $client->api('soccer')->get_tables_live(4943, 'season');
+    $xml = $client->api('soccer')->get_team_statistics(6951, array('season_id' => 8055, 'form' => 'no'));
     $xml = $client->api('soccer')->get_teams(661, 'team', array('detailed' => 'yes'));
+    $xml = $client->api('soccer')->get_transfers(8, 'competition', array('proceeded' => 'yes'));
 
     print_r($xml);die;
 
