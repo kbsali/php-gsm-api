@@ -24,7 +24,7 @@ class Baseball extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_injuries', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -41,6 +41,6 @@ class Baseball extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_weather', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

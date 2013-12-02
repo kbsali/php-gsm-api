@@ -24,7 +24,7 @@ class AmericanFootball extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_injuries', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -42,7 +42,7 @@ class AmericanFootball extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -59,6 +59,6 @@ class AmericanFootball extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_weather', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

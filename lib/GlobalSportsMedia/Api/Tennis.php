@@ -71,7 +71,7 @@ class Tennis extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_doubles', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -91,7 +91,7 @@ class Tennis extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_players', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -112,7 +112,7 @@ class Tennis extends AbstractApi
             'doubles_team' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -129,7 +129,7 @@ class Tennis extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_season_competitor', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -145,6 +145,6 @@ class Tennis extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_tours', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

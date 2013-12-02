@@ -24,7 +24,7 @@ class Hockey extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_injuries', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -41,6 +41,6 @@ class Hockey extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/'.$this->section.'/get_match_extra', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

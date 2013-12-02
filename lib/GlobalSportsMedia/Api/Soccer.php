@@ -29,7 +29,7 @@ class Soccer extends AbstractApi
             'last_n_matches' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_betting_statistics', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class Soccer extends AbstractApi
             'range' => null, // league|cups|national|all
         );
 
-        return $this->get('/'.$this->section.'/get_career', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -68,7 +68,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_hashtags', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -86,7 +86,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_head_2_head_statistics', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -103,7 +103,7 @@ class Soccer extends AbstractApi
             'type' => $type,
         );
 
-        return $this->get('/'.$this->section.'/get_injuries', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -117,7 +117,7 @@ class Soccer extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/'.$this->section.'/get_matches_live_updates', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -135,7 +135,7 @@ class Soccer extends AbstractApi
             // 'team_id' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_match_commentary', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -151,7 +151,7 @@ class Soccer extends AbstractApi
             'text' => null, // preview|review|both
         );
 
-        return $this->get('/'.$this->section.'/get_match_editorials', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -168,7 +168,7 @@ class Soccer extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/'.$this->section.'/get_match_extra', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -185,7 +185,7 @@ class Soccer extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/'.$this->section.'/get_match_formations', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -200,7 +200,7 @@ class Soccer extends AbstractApi
             'id' => $id,
         );
 
-        return $this->get('/'.$this->section.'/get_match_statistics', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -216,7 +216,7 @@ class Soccer extends AbstractApi
             'type' => 'match',
         );
 
-        return $this->get('/'.$this->section.'/get_match_statistics_v2', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -236,7 +236,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_players_abroad', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -254,7 +254,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -270,7 +270,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_runningball_matches', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -286,7 +286,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_squads_changes', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -303,7 +303,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_suspensions', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -321,7 +321,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_suspensions_warning', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -339,7 +339,7 @@ class Soccer extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_tables_cumulative', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -358,7 +358,7 @@ class Soccer extends AbstractApi
             'tabletype' => null, // total
         );
 
-        return $this->get('/'.$this->section.'/get_tables_live', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -375,7 +375,7 @@ class Soccer extends AbstractApi
             'season_id' => null, // total
         );
 
-        return $this->get('/'.$this->section.'/get_team_statistics', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -398,6 +398,6 @@ class Soccer extends AbstractApi
             'offset' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_transfers', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

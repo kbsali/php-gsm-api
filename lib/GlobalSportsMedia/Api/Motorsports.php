@@ -26,7 +26,7 @@ class Motorsports extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_circuits', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     public function get_groups()
@@ -98,7 +98,7 @@ class Motorsports extends AbstractApi
             'last_updated' => null, // yyyy-mm-dd hh:mm:ss
         );
 
-        return $this->get('/'.$this->section.'/get_sessions', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -119,7 +119,7 @@ class Motorsports extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_tables', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -140,6 +140,6 @@ class Motorsports extends AbstractApi
             'active' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_teammembers', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

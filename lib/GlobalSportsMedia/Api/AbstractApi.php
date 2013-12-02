@@ -32,15 +32,15 @@ abstract class AbstractApi
 
     /**
      * Constructs the full url request and forwards it to the Client
-     * @param  string $path
+     * @param  string $method calling __METHOD__
      * @param  array $defaults
      * @param  array $params
      * @return \SimpleXmlElement
      */
-    protected function get($path, array $defaults = null, array $params = null)
+    protected function get($method, array $defaults = null, array $params = null)
     {
         if(null === $defaults || null === $params) {
-            return $this->client->get($path);
+            return $this->client->get($this->section . '/' . explode('::', $method, 2)[1]);
         }
 
         $params = array_filter(
@@ -48,7 +48,7 @@ abstract class AbstractApi
             array($this, 'isNotNull')
         );
 
-        return $this->client->get($path . '?' . http_build_query($params));
+        return $this->client->get($this->section . '/' . explode('::', $method, 2)[1] . '?' . http_build_query($params));
     }
 
     /**
@@ -100,7 +100,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_areas', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -116,7 +116,7 @@ abstract class AbstractApi
             'authorized' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_competitions', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -131,7 +131,7 @@ abstract class AbstractApi
             'start_date' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_deleted', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -147,7 +147,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_groups', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -168,7 +168,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_head2head', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -192,7 +192,7 @@ abstract class AbstractApi
             'played' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_matches', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -211,7 +211,7 @@ abstract class AbstractApi
             'type' => null, // area|season
         );
 
-        return $this->get('/'.$this->section.'/get_matches_live', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -229,7 +229,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_referees', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -245,7 +245,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rounds', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -265,7 +265,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_seasons', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -287,7 +287,7 @@ abstract class AbstractApi
             'active' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_squads', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -306,7 +306,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_tables', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -325,7 +325,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_teams', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -343,7 +343,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_trophies', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -362,7 +362,7 @@ abstract class AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_venues', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -382,6 +382,6 @@ abstract class AbstractApi
             'limit' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_player_statistics', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }

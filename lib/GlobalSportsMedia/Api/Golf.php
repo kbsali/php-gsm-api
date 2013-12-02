@@ -81,7 +81,7 @@ class Golf extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_holebyhole', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -99,7 +99,7 @@ class Golf extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_leaderboard', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -118,7 +118,7 @@ class Golf extends AbstractApi
             'detailed' => null, // yes|no
         );
 
-        return $this->get('/'.$this->section.'/get_people', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -135,7 +135,7 @@ class Golf extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_rankings', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 
     /**
@@ -151,6 +151,6 @@ class Golf extends AbstractApi
             'lang' => null,
         );
 
-        return $this->get('/'.$this->section.'/get_tours', $defaults, $params);
+        return $this->get(__METHOD__, $defaults, $params);
     }
 }
