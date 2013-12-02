@@ -67,9 +67,9 @@ class Golf extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_holebyhole
-     * @param  int $id
-     * @param  string $type (round)
-     * @param  array $params array of optional params (last_updated, lang)
+     * @param  int               $id
+     * @param  string            $type   (round)
+     * @param  array             $params array of optional params (last_updated, lang)
      * @return \SimpleXMLElement
      */
     public function get_holebyhole($id, $type = 'round', array $params = array())
@@ -86,9 +86,9 @@ class Golf extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_leaderboard
-     * @param  int $id
-     * @param  string $type (season)
-     * @param  array $params array of optional params (lang)
+     * @param  int               $id
+     * @param  string            $type   (season)
+     * @param  array             $params array of optional params (lang)
      * @return \SimpleXMLElement
      */
     public function get_leaderboard($id, $type = 'season', array $params = array())
@@ -104,9 +104,9 @@ class Golf extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_people
-     * @param  int $id
-     * @param  string $type (people|round|season)
-     * @param  array $params array of optional params (lang, detailed)
+     * @param  int               $id
+     * @param  string            $type   (people|round|season)
+     * @param  array             $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_people($id, $type, array $params = array())
@@ -123,8 +123,8 @@ class Golf extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_rankings
-     * @param  string $type (owgr|LPGA|PGA_money|EPGA_money|FedEx)
-     * @param  array $params array of optional params (date, lang)
+     * @param  string            $type   (owgr|LPGA|PGA_money|EPGA_money|FedEx)
+     * @param  array             $params array of optional params (date, lang)
      * @return \SimpleXMLElement
      */
     public function get_rankings($type, array $params = array())
@@ -140,7 +140,7 @@ class Golf extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_tours
-     * @param  array $params array of optional params (id, type, lang)
+     * @param  array             $params array of optional params (id, type, lang)
      * @return \SimpleXMLElement
      */
     public function get_tours(array $params = array())

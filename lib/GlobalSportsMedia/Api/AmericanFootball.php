@@ -12,9 +12,9 @@ class AmericanFootball extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_injuries
-     * @param  int $id
-     * @param  string $type (competition|player|match|team)
-     * @param  array $params array of optional params
+     * @param  int               $id
+     * @param  string            $type   (competition|player|match|team)
+     * @param  array             $params array of optional params
      * @return \SimpleXMLElement
      */
     public function get_injuries($id, $type, array $params = array())
@@ -29,8 +29,8 @@ class AmericanFootball extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_rankings
-     * @param  string $type (ap_top_25|bcs|usa_today_coach)
-     * @param  array $params array of optional params (year, date, lang)
+     * @param  string            $type   (ap_top_25|bcs|usa_today_coach)
+     * @param  array             $params array of optional params (year, date, lang)
      * @return \SimpleXMLElement
      */
     public function get_rankings($type, array $params = array())
@@ -47,9 +47,9 @@ class AmericanFootball extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/american_football/functions/get_weather
-     * @param  int $id
-     * @param  string $type (match)
-     * @param  array $params array of optional params (year, date, lang)
+     * @param  int               $id
+     * @param  string            $type   (match)
+     * @param  array             $params array of optional params (year, date, lang)
      * @return \SimpleXMLElement
      */
     public function get_weather($id, $type, array $params = array())

@@ -66,8 +66,6 @@ try {
 
     print_r($xml);die;
 
-
-
     $xml = $client->api('soccer')->get_competitions();
     $ret = array();
     foreach ($xml->competition as $competition) {
@@ -86,8 +84,6 @@ try {
     }
     print_r($ret);die;
 
-
-
     $xml = $client->api('soccer')->get_areas(array('area_id' => 7));
     $ret = array();
     foreach ($xml->area->area as $area) {
@@ -98,8 +94,6 @@ try {
         );
     }
     print_r($ret);die;
-
-
 
     $xml = $client->api('am_football')->get_areas(array('area_id' => 7));
     $ret = array();
@@ -112,6 +106,6 @@ try {
     }
     print_r($ret);die;
 
-} catch(\Exception $e) {
+} catch (\Exception $e) {
     die('ERROR : '.$e->getMessage());
 }

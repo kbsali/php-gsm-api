@@ -57,9 +57,9 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_doubles
-     * @param  int $id
-     * @param  string $type (double)
-     * @param  array $params array of optional params (lang, detailed)
+     * @param  int               $id
+     * @param  string            $type   (double)
+     * @param  array             $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_doubles($id, $type, array $params = array())
@@ -76,9 +76,9 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_players
-     * @param  int $id
-     * @param  string $type (area|national_team|double|player)
-     * @param  array $params array of optional params (gender, lang, detailed)
+     * @param  int               $id
+     * @param  string            $type   (area|national_team|double|player)
+     * @param  array             $params array of optional params (gender, lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_players($id, $type, array $params = array())
@@ -96,9 +96,9 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_rankings
-     * @param  int $tour_id
-     * @param  string $type (single|double|mixed)
-     * @param  array $params array of optional params (year, weeknumber, lang, doubles_team)
+     * @param  int               $tour_id
+     * @param  string            $type    (single|double|mixed)
+     * @param  array             $params  array of optional params (year, weeknumber, lang, doubles_team)
      * @return \SimpleXMLElement
      */
     public function get_rankings($tour_id, $type, array $params = array())
@@ -117,8 +117,8 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_season_competitor
-     * @param  int $season_id
-     * @param  array $params array of optional params (lang, detailed)
+     * @param  int               $season_id
+     * @param  array             $params    array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_season_competitor($season_id, array $params = array())
@@ -134,7 +134,7 @@ class Tennis extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/tennis/functions/get_tours
-     * @param  array $params array of optional params (id, type, lang)
+     * @param  array             $params array of optional params (id, type, lang)
      * @return \SimpleXMLElement
      */
     public function get_tours(array $params = array())

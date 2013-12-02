@@ -12,9 +12,9 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_circuits
-     * @param  int $id
-     * @param  string $type (area|championship|competition|season|session|circuit)
-     * @param  array $params array of optional params (lang, detailed)
+     * @param  int               $id
+     * @param  string            $type   (area|championship|competition|season|session|circuit)
+     * @param  array             $params array of optional params (lang, detailed)
      * @return \SimpleXMLElement
      */
     public function get_circuits($id, $type, array $params = array())
@@ -81,9 +81,9 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_sessions
-     * @param  int $id
-     * @param  string $type (session|season)
-     * @param  array $params array of optional params (detailed, start_date, end_date, lang, last_updated)
+     * @param  int               $id
+     * @param  string            $type   (session|season)
+     * @param  array             $params array of optional params (detailed, start_date, end_date, lang, last_updated)
      * @return \SimpleXMLElement
      */
     public function get_sessions($id, $type, array $params = array())
@@ -103,10 +103,10 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_tables
-     * @param  int $id
-     * @param  string $type (championship)
-     * @param  int $year
-     * @param  array $params array of optional params (tabletype, lang)
+     * @param  int               $id
+     * @param  string            $type   (championship)
+     * @param  int               $year
+     * @param  array             $params array of optional params (tabletype, lang)
      * @return \SimpleXMLElement
      */
     public function get_tables($id, $type, $year, array $params = array())
@@ -124,9 +124,9 @@ class Motorsports extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_teammembers
-     * @param  int $id
-     * @param  string $type (area|season|team)
-     * @param  array $params array of optional params (detailed, lang, last_updated, active)
+     * @param  int               $id
+     * @param  string            $type   (area|season|team)
+     * @param  array             $params array of optional params (detailed, lang, last_updated, active)
      * @return \SimpleXMLElement
      */
     public function get_teammembers($id, $type, array $params = array())

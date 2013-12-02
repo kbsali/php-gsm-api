@@ -145,7 +145,7 @@ class Client
 
     /**
      * HTTP GETs a xml $path
-     * @param  string $path
+     * @param  string            $path
      * @return \SimpleXMLElement
      */
     public function get($path)
@@ -235,15 +235,17 @@ class Client
         $this->getPort($this->url.$path);
 
         $curl = curl_init();
-        if (isset($this->httpAuthUser) && isset($this->httpAuthPwd) && $this->useHttpAuth) {
-            curl_setopt($curl, CURLOPT_USERPWD, $this->httpAuthUser.':'.$this->httpAuthPwd );
-            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        }
+
         curl_setopt($curl, CURLOPT_URL, $this->url.$path);
         curl_setopt($curl, CURLOPT_VERBOSE, 0);
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_PORT , $this->port);
+
+        if (isset($this->httpAuthUser) && isset($this->httpAuthPwd) && $this->useHttpAuth) {
+            curl_setopt($curl, CURLOPT_USERPWD, $this->httpAuthUser.':'.$this->httpAuthPwd );
+            curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        }
         if (80 !== $this->port) {
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->checkSslCertificate);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, $this->checkSslHost);
@@ -273,7 +275,7 @@ class Client
         }
         $response = curl_exec($curl);
 
-        if(false !== strpos($response, 'not authorized')) {
+        if (false !== strpos($response, 'not authorized')) {
             $e = new \Exception('Not authorized! Please check your subscription (you requested : '.$tmp['path'].')');
             curl_close($curl);
             throw $e;

@@ -12,9 +12,9 @@ class Hockey extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/hockey/functions/get_injuries
-     * @param  int $id
-     * @param  string $type (competition|player|match|team)
-     * @param  array $params array of optional params
+     * @param  int               $id
+     * @param  string            $type   (competition|player|match|team)
+     * @param  array             $params array of optional params
      * @return \SimpleXMLElement
      */
     public function get_injuries($id, $type, array $params = array())
@@ -29,8 +29,8 @@ class Hockey extends AbstractApi
 
     /**
      * @link http://client.globalsportsmedia.com/documentation/{$this->section}/functions/get_match_extra
-     * @param  int $id
-     * @param  array $params array of optional params (lang, last_updated)
+     * @param  int               $id
+     * @param  array             $params array of optional params (lang, last_updated)
      * @return \SimpleXMLElement
      */
     public function get_match_extra($id, array $params = array())
