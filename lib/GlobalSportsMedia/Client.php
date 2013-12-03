@@ -63,6 +63,16 @@ class Client
     private $httpAuthPwd;
 
     /**
+     * @var string
+     */
+    private $cacheDir;
+
+    /**
+     * @var boolean
+     */
+    private $useCache = true;
+
+    /**
      * @param string $url
      * @param string $user http auth username
      * @param string $pwd  http auth password
@@ -197,6 +207,28 @@ class Client
     }
 
     /**
+     * Set the cache directory
+     * @param string $cacheDir
+     */
+    public function setCacheDir($cacheDir = null)
+    {
+        if (null !== $cacheDir) {
+            $this->cacheDir = $cacheDir;
+        }
+        if (!is_dir($this->cacheDir)) {
+            mkdir($this->cacheDir, 0777, true);
+        }
+    }
+
+    /**
+     * @param boolean $useCache
+     */
+    public function setUseCache($useCache = true)
+    {
+        $this->useCache = (bool) $useCache;
+    }
+
+    /**
      * Returns the port of the current connection,
      * if not set, it will try to guess the port
      * from the given $urlPath
@@ -232,6 +264,16 @@ class Client
      */
     private function runRequest($path, $method = 'GET', $data = '')
     {
+        if (true === $this->useCache) {
+            if (null === $this->cacheDir) {
+                throw new \Exception('Specify cache directory');
+            }
+            $cacheFile = $this->cacheDir.'/'.$this->slugify($this->url.$path);
+            if (file_exists($cacheFile)) {
+                return new \SimpleXMLElement(file_get_contents($cacheFile));
+            }
+        }
+
         $this->getPort($this->url.$path);
 
         $curl = curl_init();
@@ -242,6 +284,11 @@ class Client
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_PORT , $this->port);
 
+        // GSM API is XML only
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Content-Type: text/xml',
+        ));
+
         if (isset($this->httpAuthUser) && isset($this->httpAuthPwd) && $this->useHttpAuth) {
             curl_setopt($curl, CURLOPT_USERPWD, $this->httpAuthUser.':'.$this->httpAuthPwd );
             curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -249,13 +296,6 @@ class Client
         if (80 !== $this->port) {
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, $this->checkSslCertificate);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, $this->checkSslHost);
-        }
-
-        $tmp = parse_url($this->url.$path);
-        if ('xml' === substr($tmp['path'], -3)) {
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: text/xml',
-            ));
         }
 
         switch ($method) {
@@ -275,7 +315,12 @@ class Client
         }
         $response = curl_exec($curl);
 
+        if (true === $this->useCache) {
+            file_put_contents($cacheFile, $response);
+        }
+
         if (false !== strpos($response, 'not authorized')) {
+            $tmp = parse_url($this->url.$path);
             $e = new \Exception('Not authorized! Please check your subscription (you requested : '.$tmp['path'].')');
             curl_close($curl);
             throw $e;
@@ -298,4 +343,20 @@ class Client
 
         return true;
     }
+
+    public function slugify($text)
+    {
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+        $text = trim($text, '-');
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        $text = strtolower($text);
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        if (empty($text)) {
+           return 'n-a';
+        }
+
+        return $text;
+    }
+
 }
