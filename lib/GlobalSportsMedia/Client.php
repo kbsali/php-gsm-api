@@ -273,7 +273,6 @@ class Client
                 return new \SimpleXMLElement(file_get_contents($cacheFile));
             }
         }
-
         $this->getPort($this->url.$path);
 
         $curl = curl_init();
@@ -283,6 +282,9 @@ class Client
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_PORT , $this->port);
+
+        // curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5); // The number of seconds to wait while trying to connect
+        // curl_setopt($curl, CURLOPT_TIMEOUT, 3); // The maximum number of seconds to allow cURL functions to execute.
 
         // GSM API is XML only
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
@@ -315,15 +317,21 @@ class Client
         }
         $response = curl_exec($curl);
 
-        if (true === $this->useCache) {
-            file_put_contents($cacheFile, $response);
+        if (false !== strpos($response, 'class="errors"')) {
+            $xml = new \DOMDocument();
+            $xml->loadHTML($response);
+            foreach($xml->getElementsByTagName('div') as $div) {
+                if('errors' == $div->getAttribute('class')) {
+                    $tmp = parse_url($this->url.$path);
+                    $e = new \Exception((string)$div->nodeValue.' - (you requested : '.$tmp['path'].'?'.$tmp['query'].')');
+                    curl_close($curl);
+                    throw $e;
+                }
+            }
         }
 
-        if (false !== strpos($response, 'not authorized')) {
-            $tmp = parse_url($this->url.$path);
-            $e = new \Exception('Not authorized! Please check your subscription (you requested : '.$tmp['path'].')');
-            curl_close($curl);
-            throw $e;
+        if (true === $this->useCache) {
+            file_put_contents($cacheFile, $response);
         }
 
         if (curl_errno($curl)) {
