@@ -1,9 +1,9 @@
 {
     "name": "kbsali/gsm-api",
     "type": "library",
-    "description": "GlobalSportsMedia API client",
+    "description": "GlobalSportsMedia (GSM) API client",
     "homepage": "https://github.com/kbsali/php-gsm-api",
-    "keywords": ["globalsportsmedia", "gsm", "sport", "api"],
+    "keywords": ["globalsportsmedia", "gsm", "sport", "xml", "api"],
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.4",
         "ext-curl": "*"
     },
     "autoload": {
