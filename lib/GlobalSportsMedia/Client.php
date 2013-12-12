@@ -5,7 +5,7 @@ namespace GlobalSportsMedia;
 use SimpleXMLElement;
 
 /**
- * Simple PHP GlobalSportsMedia client
+ * Simple PHP GlobalSportsMedia (GSM) XML API client
  * @author Kevin Saliou <kevin at saliou dot name>
  * Website: http://github.com/kbsali/php-globalsportsmedia-api
  */
@@ -256,11 +256,11 @@ class Client
     }
 
     /**
-     * @param  string                        $path
-     * @param  string                        $method
-     * @param  string                        $data
-     * @return false|SimpleXMLElement|string
-     * @throws \Exception                    If anything goes wrong on curl request
+     * @param  string                       $path
+     * @param  string                       $method
+     * @param  string                       $data
+     * @return true|SimpleXMLElement|string
+     * @throws \Exception                   If anything goes wrong on curl request
      */
     private function runRequest($path, $method = 'GET', $data = '')
     {
@@ -315,33 +315,21 @@ class Client
             default: // GET
                 break;
         }
-        $response = curl_exec($curl);
 
-        if (false !== strpos($response, 'class="errors"')) {
-            $xml = new \DOMDocument();
-            $xml->loadHTML($response);
-            foreach($xml->getElementsByTagName('div') as $div) {
-                if('errors' == $div->getAttribute('class')) {
-                    $tmp = parse_url($this->url.$path);
-                    $e = new \Exception((string)$div->nodeValue.' - (you requested : '.$tmp['path'].'?'.$tmp['query'].')');
-                    curl_close($curl);
-                    throw $e;
-                }
-            }
-        }
-
-        if (true === $this->useCache) {
-            file_put_contents($cacheFile, $response);
-        }
-
-        if (curl_errno($curl)) {
-            $e = new \Exception(curl_error($curl), curl_errno($curl));
+        try {
+            $response = curl_exec($curl);
+            $this->checkForErorr($curl, $response);
             curl_close($curl);
-            throw $e;
+        } catch (\Exception $e) {
+            curl_close($curl);
+            $tmp = parse_url($this->url.$path);
+            throw new \Exception($e->getMessage().' - (you requested : '.$tmp['path'].'?'.$tmp['query'].')');
         }
-        curl_close($curl);
 
         if ($response) {
+            if (true === $this->useCache) {
+                file_put_contents($cacheFile, $response);
+            }
             if ('<' === substr($response, 0, 1)) {
                 return new \SimpleXMLElement($response);
             }
@@ -352,7 +340,53 @@ class Client
         return true;
     }
 
-    public function slugify($text)
+    /**
+     * Checks for errors (http code, or error message in html response, or any other curl error)
+     * @param  ressource  $curl
+     * @param  string     $response
+     * @return void
+     * @throws \Exception if any error is found
+     */
+    private function checkForErorr($curl, $response)
+    {
+        // Check for http_code error
+        $errorCodes = array(
+            '400' => 'Bad Request - You have provided a parameter that the function does not support.',
+            '401' => 'Unauthorized - You have not provided a username/password or authkey.',
+            '403' => 'Forbidden - You have not been authenticated or your subscription does not permit you to request the data you have requested.',
+            '404' => 'Not Found - You have requested nonexistent data.',
+            '429' => 'Too Many Requests - You have made too many requests.',
+            '500' => 'Internal Server Error - Error is caused by malfunction on our side. Our IT department is notified about this automatically.',
+            '501' => 'Not Implemented - The sport and/or function you have requested does not exist.',
+        );
+        $httpCode = curl_getinfo($curl)['http_code'];
+        if (isset($errorCodes[$httpCode])) {
+            throw new \Exception($errorCodes[$httpCode]);
+        }
+
+        // Check for error message in (html) $response
+        if (false !== strpos($response, 'class="errors"')) {
+            $xml = new \DOMDocument();
+            $xml->loadHTML($response);
+            foreach ($xml->getElementsByTagName('div') as $div) {
+                if ('errors' == $div->getAttribute('class')) {
+                    throw new \Exception((string) $div->nodeValue);
+                }
+            }
+        }
+
+        // Check for curl error
+        if (curl_errno($curl)) {
+            throw new \Exception(curl_error($curl), curl_errno($curl));
+        }
+    }
+
+    /**
+     * Slugify $text (based on symfony 1.4 solution http://symfony.com/legacy/doc/jobeet/1_4/en/08?orm=Doctrine)
+     * @param  string $text
+     * @return string
+     */
+    private function slugify($text)
     {
         $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
         $text = trim($text, '-');
