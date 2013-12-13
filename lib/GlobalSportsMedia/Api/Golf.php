@@ -10,61 +10,6 @@ class Golf extends AbstractApi
 {
     protected $section = 'golf';
 
-    public function get_competitions()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_groups()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_head2head()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_matches_live()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_referees()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_squads()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_tables()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_teams()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_trophies()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_venues()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_player_statistics()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
     /**
      * @link http://client.globalsportsmedia.com/documentation/golf/functions/get_holebyhole
      * @param  int               $id

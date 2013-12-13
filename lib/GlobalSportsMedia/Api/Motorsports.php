@@ -29,56 +29,6 @@ class Motorsports extends AbstractApi
         return $this->get(__METHOD__, $defaults, $params);
     }
 
-    public function get_groups()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_head2head()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_matches()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_matches_live()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_referees()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_rounds()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_squads()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_trophies()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_venues()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
-    public function get_player_statistics()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
-
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_sessions
      * @param  int               $id

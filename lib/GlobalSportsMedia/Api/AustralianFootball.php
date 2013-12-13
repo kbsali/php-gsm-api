@@ -9,9 +9,4 @@ namespace GlobalSportsMedia\Api;
 class AustralianFootball extends AbstractApi
 {
     protected $section = 'australianfootball';
-
-    public function get_player_statistics()
-    {
-        throw new \Exception(__METHOD__.' - this method does not exist');
-    }
 }
