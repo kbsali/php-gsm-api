@@ -1,4 +1,4 @@
-# PHP Redmine API
+# PHP GSM API
 
 A simple PHP5 Object Oriented wrapper for GlobalSportsMedia (GSM) XML API.
 
@@ -14,45 +14,30 @@ See [http://client.globalsportsmedia.com/documentation](http://client.globalspor
  * OK baseball
  * OK basketball
  * OK cricket
- * NOK golf
+ * OK golf
  * OK handball
  * OK hockey
- * NOK motorsports
- * OK rugby;
- * *NOK tennis - only partially implemented*
+ * OK motorsports
+ * OK rugby
+ * OK tennis
  * OK volleyball
-
-Note : all the methods are declared, but those missing final implementation will throw a "this method does not exist" Exception.
 
 ## Requirements
 
 * PHP >= 5.4 with [cURL](http://php.net/manual/en/book.curl.php) extension,
 
-## Autoload
+## Install
 
-The first step to use `php-gsm-api` is to download/install [composer](http://getcomposer.org/):
+Through [composer](http://getcomposer.org/download/), simply run :
 
 ```bash
-$ curl -s http://getcomposer.org/installer | php
+$ php composer.phar require kbsali/gsm-api:1.*
 ```
 
-Then create a composer.json file in the root of your project:
+## Basic usage of `php-gsm-api` client
 
-```yaml
-{
-    "require": {
-        ...
-        "kbsali/gsm-api": "dev-master"
-    }
-}
-```
-
-... and install your dependencies using:
-```bash
-$ php composer.phar install
-```
-
-## Basic usage of `php-gsm-api` client following the basic workflow documented in [globalsportsmedia.com](http://client.globalsportsmedia.com/documentation/soccer)
+All the methods return a [SimpleXmlElement](http://php.net/manual/es/class.simplexmlelement.php) object or throw an Exception in case of error.
+Following the basic workflow documented in [globalsportsmedia.com](http://client.globalsportsmedia.com/documentation/soccer) for working with Soccer data :
 
 ```php
 <?php
@@ -61,8 +46,10 @@ $ php composer.phar install
 require_once 'vendor/autoload.php';
 
 $client = new GlobalSportsMedia\Client('http://webpull.globalsportsmedia.com', 'USERNAME', 'PASSWORD');
-$client->setCacheDir(__DIR__.'/cache'); // caches the xml responses
-$client->setUseCache(true);
+$client
+    ->setUseCache(true) // for live method (like get_matches_live_updates) you might want to disable caching
+    ->setCacheDir(__DIR__.'/cache') // path where xml responess will be cached
+;
 
 try {
     $seasons = $client->api('soccer')->get_seasons(['authorized' => 'yes']);
@@ -81,4 +68,3 @@ try {
 }
 ```
 
-Note : all the methods return a SimpleXmlElement object or throw an Exception in case of error.

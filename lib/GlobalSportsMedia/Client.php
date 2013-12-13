@@ -169,46 +169,58 @@ class Client
 
     /**
      * Turns on/off ssl certificate check
-     * @param boolean $check
+     * @param  boolean $check
+     * @return Client
      */
     public function setCheckSslCertificate($check = false)
     {
         $this->checkSslCertificate = $check;
+
+        return $this;
     }
 
     /**
      * Turns on/off ssl host certificate check
-     * @param boolean $check
+     * @param  boolean $check
+     * @return Client
      */
     public function setCheckSslHost($check = false)
     {
-      $this->checkSslHost = $check;
+        $this->checkSslHost = $check;
+
+        return $this;
     }
 
     /**
      * Turns on/off http auth
-     * @param bool $use
-     * @internal param bool $check
+     * @param  bool   $use
+     * @return Client
      */
     public function setUseHttpAuth($use = true)
     {
         $this->useHttpAuth = $use;
+
+        return $this;
     }
 
     /**
      * Set the port of the connection
-     * @param int $port
+     * @param  int    $port
+     * @return Client
      */
     public function setPort($port = null)
     {
         if (null !== $port) {
             $this->port = (int) $port;
         }
+
+        return $this;
     }
 
     /**
      * Set the cache directory
-     * @param string $cacheDir
+     * @param  string $cacheDir
+     * @return Client
      */
     public function setCacheDir($cacheDir = null)
     {
@@ -218,14 +230,19 @@ class Client
         if (!is_dir($this->cacheDir)) {
             mkdir($this->cacheDir, 0777, true);
         }
+
+        return $this;
     }
 
     /**
-     * @param boolean $useCache
+     * @param  boolean $useCache
+     * @return Client
      */
     public function setUseCache($useCache = true)
     {
         $this->useCache = (bool) $useCache;
+
+        return $this;
     }
 
     /**
