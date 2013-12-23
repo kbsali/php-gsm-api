@@ -40,17 +40,9 @@ class Client
     private $checkSslHost = false;
 
     /**
-     *
-     * Flag to determine authentication method
-     *
      * @var boolean
      */
     private $useHttpAuth = true;
-
-    /**
-     * @var array APIs
-     */
-    private $apis = array();
 
     /**
      * @var string
@@ -70,7 +62,16 @@ class Client
     /**
      * @var boolean
      */
-    private $useCache = true;
+    private $cacheType = self::CACHE_OFF;
+
+    const CACHE_OFF = 0;
+    const CACHE_ON = 1;
+    const CACHE_ONCE_PER_DAY = 2;
+
+    /**
+     * @var array APIs
+     */
+    private $apis = array();
 
     /**
      * @param string $url
@@ -154,7 +155,7 @@ class Client
     }
 
     /**
-     * HTTP GETs a xml $path
+     * "HTTP GET"s a xml $path
      * @param  string            $path
      * @return \SimpleXMLElement
      */
@@ -235,14 +236,45 @@ class Client
     }
 
     /**
-     * @param  boolean $useCache
+     * Don't cache any request
      * @return Client
      */
-    public function setUseCache($useCache = true)
+    public function cacheOff()
     {
-        $this->useCache = (bool) $useCache;
+        $this->cacheType = self::CACHE_OFF;
 
         return $this;
+    }
+
+    /**
+     * Cache every request
+     * @return Client
+     */
+    public function cacheOn()
+    {
+        $this->cacheType = self::CACHE_ON;
+
+        return $this;
+    }
+
+    /**
+     * Cache requests only once a day (append current date to cache filename)
+     * @return Client
+     */
+    public function cacheOncePerDay()
+    {
+        $this->cacheType = self::CACHE_ONCE_PER_DAY;
+
+        return $this;
+    }
+
+    /**
+     * Checks if caching is enabled
+     * @return bool
+     */
+    public function isCacheEnabled()
+    {
+        return self::CACHE_ONCE_PER_DAY === $this->cacheType || self::CACHE_ON === $this->cacheType;
     }
 
     /**
@@ -281,11 +313,14 @@ class Client
      */
     private function runRequest($path, $method = 'GET', $data = '')
     {
-        if (true === $this->useCache) {
+        if ($this->isCacheEnabled()) {
             if (null === $this->cacheDir) {
                 throw new \Exception('Specify cache directory');
             }
             $cacheFile = $this->cacheDir.'/'.$this->slugify($this->url.$path);
+            if (self::CACHE_ONCE_PER_DAY === $this->cacheType) {
+                $cacheFile.= '--' . date('Y-m-d');
+            }
             if (file_exists($cacheFile)) {
                 return new \SimpleXMLElement(file_get_contents($cacheFile));
             }
@@ -344,7 +379,7 @@ class Client
         }
 
         if ($response) {
-            if (true === $this->useCache) {
+            if ($this->isCacheEnabled()) {
                 file_put_contents($cacheFile, $response);
             }
             if ('<' === substr($response, 0, 1)) {
