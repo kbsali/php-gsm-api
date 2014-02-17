@@ -32,7 +32,7 @@ class Motorsports extends AbstractApi
     /**
      * @link http://client.globalsportsmedia.com/documentation/motorsports/functions/get_sessions
      * @param  int               $id
-     * @param  string            $type   (session|season)
+     * @param  string            $type   (area|season|session|team)
      * @param  array             $params array of optional params (detailed, start_date, end_date, lang, last_updated)
      * @return \SimpleXMLElement
      */
@@ -59,7 +59,7 @@ class Motorsports extends AbstractApi
      * @param  array             $params array of optional params (tabletype, lang)
      * @return \SimpleXMLElement
      */
-    public function get_tables($id, $type, $year, array $params = array())
+    public function get_tables($id, $type = 'championship', $year, array $params = array())
     {
         $defaults = array(
             'id' => $id,

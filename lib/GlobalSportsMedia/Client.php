@@ -229,7 +229,9 @@ class Client
             $this->cacheDir = $cacheDir;
         }
         if (!is_dir($this->cacheDir)) {
-            mkdir($this->cacheDir, 0777, true);
+            if (!mkdir($this->cacheDir, 0777, true)) {
+                throw new \Exception(sprintf('Could not create cache directory "%s"', $this->cacheDir));
+            }
         }
 
         return $this;
