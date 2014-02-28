@@ -20,8 +20,5 @@
         "psr-0": {
             "GlobalSportsMedia": "lib/"
         }
-    },
-    "config": {
-        "bin-dir": "bin/"
     }
 }

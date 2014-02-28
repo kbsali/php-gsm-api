@@ -92,55 +92,29 @@ class Client
      */
     public function api($name)
     {
-        if (!isset($this->apis[$name])) {
-            switch ($name) {
-
-                case 'soccer':
-                    $api = new Api\Soccer($this);
-                    break;
-                case 'am_football':
-                    $api = new Api\AmericanFootball($this);
-                    break;
-                case 'aus_football':
-                    $api = new Api\AustralianFootball($this);
-                    break;
-                case 'baseball':
-                    $api = new Api\Baseball($this);
-                    break;
-                case 'basketball':
-                    $api = new Api\Basketball($this);
-                    break;
-                case 'cricket':
-                    $api = new Api\Cricket($this);
-                    break;
-                case 'golf':
-                    $api = new Api\Golf($this);
-                    break;
-                case 'handball':
-                    $api = new Api\Handball($this);
-                    break;
-                case 'hockey':
-                    $api = new Api\Hockey($this);
-                    break;
-                case 'motorsports':
-                    $api = new Api\Motorsports($this);
-                    break;
-                case 'rugby':
-                    $api = new Api\Rugby($this);
-                    break;
-                case 'tennis':
-                    $api = new Api\Tennis($this);
-                    break;
-                case 'volleyball':
-                    $api = new Api\Volleyball($this);
-                    break;
-
-                default:
-                    throw new \InvalidArgumentException();
-            }
-
-            $this->apis[$name] = $api;
+        $classes = array(
+            'soccer'       => 'Soccer',
+            'am_football'  => 'AmericanFootball',
+            'aus_football' => 'AustralianFootball',
+            'baseball'     => 'Baseball',
+            'basketball'   => 'Basketball',
+            'cricket'      => 'Cricket',
+            'golf'         => 'Golf',
+            'handball'     => 'Handball',
+            'hockey'       => 'Hockey',
+            'motorsports'  => 'Motorsports',
+            'rugby'        => 'Rugby',
+            'tennis'       => 'Tennis',
+            'volleyball'   => 'Volleyball',
+        );
+        if (!isset($classes[$name])) {
+            throw new \InvalidArgumentException();
         }
+        if (isset($this->apis[$name])) {
+            return $this->apis[$name];
+        }
+        $c = 'GlobalSportsMedia\Api\\'.$classes[$name];
+        $this->apis[$name] = new $c($this);
 
         return $this->apis[$name];
     }
